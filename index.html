@@ -539,14 +539,31 @@ dbr:Alice foaf:name "Alice" .</pre>
     </section>
     
     <section id="some-slide" class="slide" inlist="" rel="schema:hasPart" resource="#some-slide">
-      <h2 property="schema:name">TODO: A regular slide</h2>
+      <h2 property="schema:name">Popular biological SPARQL endpoints</h2>
       <ul>
           <li>
-          	  <h3>A</h3>
-			  <span class="indent">TODO: Description</span>
+          	  <h3>Uniprot: Protein sequences (210+ billion triples)</h3>
+			  <span class="indent"><a href="https://sparql.uniprot.org/">https://sparql.uniprot.org/</a></span>
           </li>
-          <li>B</li>
-          <li>C</li>
+          <li>
+          	  <h3>Rhea: Chenical and transport reactions (5+ million triples)</h3>
+			  <span class="indent"><a href="https://sparql.rhea-db.org/">https://sparql.rhea-db.org/</a></span>
+          </li>
+      </ul>
+    </section>
+    
+    <section id="some-slide" class="slide" inlist="" rel="schema:hasPart" resource="#some-slide">
+      <h2 property="schema:name">Federation over multiple SPARQL endpoints</h2>
+      <p>Data across multiple datasources can be joined in a single query</p>
+      <ul>
+          <li>
+          	  <h3><a href="https://sparql.uniprot.org/.well-known/sparql-examples/51">Find all proteins linked to arachidonate (CHEBI:32395)</a></h3>
+			  <span class="indent">Joins Uniprot and Rhea</span>
+          </li>
+          <li>
+          	  <h3><a href="https://sparql.uniprot.org/.well-known/sparql-examples/40">Retrieve human enzymes that metabolize sphingolipids and are annotated in ChEMBL</a></h3>
+			  <span class="indent">Joins Uniprot, Rhea, and ChEMBL</span>
+          </li>
       </ul>
     </section>
     
