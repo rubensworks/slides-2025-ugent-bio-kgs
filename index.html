@@ -16,6 +16,16 @@
       .shower {
         --slide-ratio: calc(16 / 9);
       }
+      table.query-results thead tr {
+          border: solid 1px gray;
+      }
+      table.query-results thead td {
+          font-weight: bold;
+          background-color: white;
+      }
+      table.query-results tbody tr {
+          border: solid 1px gray;
+      }
     </style>
   </head>
 
@@ -383,15 +393,137 @@ dbr:Alice foaf:name "Alice" .</pre>
       </ul>
     </section>
     
-    <section id="some-slide" class="slide" inlist="" rel="schema:hasPart" resource="#some-slide">
-      <h2 property="schema:name">TODO: A regular slide</h2>
+    <section id="start" class="slide" inlist="" rel="schema:hasPart" resource="#start">
+        <h2 property="schema:name">SPARQL querying over RDF datasets</h2>
+        <ul>
+            <li><strong>SPARQL</strong>: language to read and update RDF datasets via <em>declarative queries</em>.</li>
+            <li>
+                Different query forms:<br /><br />
+                <ul>
+                    <li><code>SELECT</code>: selecting values in tabular form<span class="next"> <strong>&rarr; focus of this presentation</strong></span></li>
+                    <li><code>CONSTRUCT</code>: construct new triples</li>
+                    <li><code>ASK</code>: check if data exists</li>
+                    <li><code>DESCRIBE</code>: describe a given resource</li>
+                    <li><code>INSERT</code>: insert new triples</li>
+                    <li><code>DELETE</code>: delete existing triples</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Specification: <a href="https://www.w3.org/TR/sparql-query/">https://www.w3.org/TR/sparql-query/</a></p>
+    </section>
+    
+    <section id="example" class="slide" inlist="" rel="schema:hasPart" resource="#example" style="font-size: 0.9em">
+        <h2 property="schema:name">Find all artists born in York</h2>
+        <ul>
+            <li><pre>SELECT ?name ?deathDate WHERE {
+  ?person a dbpedia-owl:Artist;
+          rdfs:label ?name;
+          dbpedia-owl:birthPlace [ rdfs:label "York"@en ].
+  FILTER LANGMATCHES(LANG(?name),  "EN")
+  OPTIONAL { ?person dbpprop:dateOfDeath ?deathDate. }
+}
+</pre></li>
+        </ul>
+        <table class="next query-results">
+            <thead>
+                <tr><td>name</td><td>deathDate</td></tr>
+            </thead>
+            <tbody>
+                <tr><td>Albert Joseph Moore</td><td></td></tr>
+                <tr><td>Charles Francis Hansom</td><td>1888</td></tr>
+                <tr><td>David Reed (comedian)</td><td></td></tr>
+                <tr><td>Dustin Gee</td><td></td></tr>
+                <tr><td>E Ridsdale Tate</td><td>1922</td></tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <section id="how1" class="slide" inlist="" rel="schema:hasPart" resource="#how1">
+        <h2 property="schema:name" class="big">How do query engines process a query?</h2>
+        <p style="text-align: center; font-size: 1.3em" class="next">
+            RDF dataset + SPARQL query <br/>
+            &darr;<br />
+            <strong>...</strong><br />
+            &darr;<br/>
+            query results
+        </p>
+    </section>
+    
+    <section id="how2" class="slide" inlist="" rel="schema:hasPart" resource="#how2">
+        <h2 property="schema:name" class="big">How do query engines process a query?</h2>
+        <p style="text-align: center; font-size: 1.3em">
+            RDF dataset + SPARQL query <br/>
+            &darr;<br />
+            <strong>SPARQL query processing</strong><br />
+            &darr;<br/>
+            query results
+        </p>
+    </section>
+    
+    <section id="basics-restrict" class="slide" inlist="" rel="schema:hasPart" resource="#basics-restrict">
+      <h2 property="schema:name">Basic Graph Patterns enable graph pattern matching</h2>
       <ul>
           <li>
-          	  <h3>A</h3>
-			  <span class="indent">TODO: Description</span>
+          	  <h3>Basic Graph Pattern (BGP)</h3>
+			  <span class="indent">A collection of <em>triple patterns</em>.</span>
           </li>
-          <li>B</li>
-          <li>C</li>
+          <li>
+<pre style="font-size: 0.8em">    ?person a dbpedia-owl:Artist.
+    ?person rdfs:label ?name.
+    ?person dbpedia-owl:birthPlace ?birthPlace.
+</pre></li>
+          <li>
+          	  <h3>Triple Pattern</h3>
+			  <span class="indent">A triple in which any component may be a variable.</span><br />
+			  <span class="indent">Variables start with <code>?</code>, followed by a <em>label</em>. (e.g. <code>?name</code>)</span>
+          </li>
+          <li>
+          	  <h3>More complex operators are possible</h3>
+    		  <span class="indent"><code>OPTIONAL</code>, <code>UNION</code>, <code>FILTER</code>, ...</span>
+          </li>
+      </ul>
+    </section>
+    
+    <section id="basics-solutions" class="slide" inlist="" rel="schema:hasPart" resource="#basics-solutions">
+      <h2 property="schema:name">Query results representation</h2>
+      <ul>
+          <li>
+          	  <h3>Solution Mapping</h3>
+			  <span class="indent">Mapping from a set of variable labels to a set of RDF terms.</span>
+          </li>
+          <li>
+          	  <h3>Solution Sequence</h3>
+			  <span class="indent">A list of solution mappings.</span>
+          </li>
+      </ul>
+      <em>1 solution sequence with 3 solution mappings:</em>
+      <table class="query-results">
+          <thead>
+              <tr><td>name</td><td>birthplace</td></tr>
+          </thead>
+          <tbody>
+              <tr><td>Bob Brockmann</td><td>http://dbpedia.org/resource/Louisiana</td></tr>
+              <tr><td>Bennie Nawahi</td><td>http://dbpedia.org/resource/Honolulu</td></tr>
+              <tr><td>Weird Al Yankovic</td><td>http://dbpedia.org/resource/Downey,_California</td></tr>
+          </tbody>
+      </table>
+    </section>
+    
+    <section id="basics-steps" class="slide" inlist="" rel="schema:hasPart" resource="#basics-steps">
+      <h2 property="schema:name">Steps in SPARQL query processing</h2>
+      <ul>
+          <li>
+          	  <h3>1. Parsing</h3>
+			  <span class="indent">Transform a SPARQL query string into an algebra expression</span>
+          </li>
+          <li>
+          	  <h3>2. Optimization</h3>
+			  <span class="indent">Transform algebra expression into a query plan</span>
+          </li>
+          <li>
+          	  <h3>3. Evaluation</h3>
+			  <span class="indent">Executes query plan to obtain query results</span>
+          </li>
       </ul>
     </section>
     
