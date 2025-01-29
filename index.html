@@ -67,7 +67,6 @@
 		<li><a href="#index-rdf">RDF</a></li>
         <li><a href="#index-sparql">SPARQL</a></li>
         <li><a href="#index-examples">Examples</a></li>
-        <li><a href="#index-future">Future challenges</a></li>
       </ul>
     </section>
     
@@ -78,7 +77,6 @@
 		<li><a href="#index-rdf">RDF</a></li>
         <li><a href="#index-sparql">SPARQL</a></li>
         <li><a href="#index-examples">Examples</a></li>
-        <li><a href="#index-future">Future challenges</a></li>
       </ul>
     </section>
     
@@ -205,7 +203,6 @@
 		<li><a href="#index-rdf">RDF</a></li>
         <li><a href="#index-sparql">SPARQL</a></li>
         <li><a href="#index-examples">Examples</a></li>
-        <li><a href="#index-future">Future challenges</a></li>
       </ul>
     </section>
     
@@ -296,7 +293,6 @@
 		<li class="current"><a href="#index-rdf">RDF</a></li>
         <li><a href="#index-sparql">SPARQL</a></li>
         <li><a href="#index-examples">Examples</a></li>
-        <li><a href="#index-future">Future challenges</a></li>
       </ul>
     </section>
     
@@ -389,7 +385,6 @@ dbr:Alice foaf:name "Alice" .</pre>
 		<li><a href="#index-rdf">RDF</a></li>
         <li class="current"><a href="#index-sparql">SPARQL</a></li>
         <li><a href="#index-examples">Examples</a></li>
-        <li><a href="#index-future">Future challenges</a></li>
       </ul>
     </section>
     
@@ -534,42 +529,35 @@ dbr:Alice foaf:name "Alice" .</pre>
 		<li><a href="#index-rdf">RDF</a></li>
         <li><a href="#index-sparql">SPARQL</a></li>
         <li class="current"><a href="#index-examples">Examples</a></li>
-        <li><a href="#index-future">Future challenges</a></li>
       </ul>
     </section>
     
     <section id="some-slide" class="slide" inlist="" rel="schema:hasPart" resource="#some-slide">
-      <h2 property="schema:name">TODO: A regular slide</h2>
+      <h2 property="schema:name">Popular biological SPARQL endpoints</h2>
       <ul>
           <li>
-          	  <h3>A</h3>
-			  <span class="indent">TODO: Description</span>
+          	  <h3>Uniprot: Protein sequences (210+ billion triples)</h3>
+			  <span class="indent"><a href="https://sparql.uniprot.org/">https://sparql.uniprot.org/</a></span>
           </li>
-          <li>B</li>
-          <li>C</li>
+          <li>
+          	  <h3>Rhea: Chenical and transport reactions (5+ million triples)</h3>
+			  <span class="indent"><a href="https://sparql.rhea-db.org/">https://sparql.rhea-db.org/</a></span>
+          </li>
       </ul>
     </section>
     
-    <section id="index-future" class="slide index" inlist="" rel="schema:hasPart" resource="#index-future">
-      <ul>
-        <li><a href="#index-web">World Wide Web</a></li>
-        <li><a href="#index-semweb">Semantics Web</a></li>
-		<li><a href="#index-rdf">RDF</a></li>
-        <li><a href="#index-sparql">SPARQL</a></li>
-        <li><a href="#index-examples">Examples</a></li>
-        <li class="current"><a href="#index-future">Future challenges</a></li>
-      </ul>
-    </section>
-
     <section id="some-slide" class="slide" inlist="" rel="schema:hasPart" resource="#some-slide">
-      <h2 property="schema:name">TODO: A regular slide</h2>
+      <h2 property="schema:name">Federation over multiple SPARQL endpoints</h2>
+      <p>Data across multiple datasources can be joined in a single query</p>
       <ul>
           <li>
-          	  <h3>A</h3>
-			  <span class="indent">TODO: Description</span>
+          	  <h3><a href="https://sparql.uniprot.org/.well-known/sparql-examples/51">Find all proteins linked to arachidonate (CHEBI:32395)</a></h3>
+			  <span class="indent">Joins Uniprot and Rhea</span>
           </li>
-          <li>B</li>
-          <li>C</li>
+          <li>
+          	  <h3><a href="https://sparql.uniprot.org/.well-known/sparql-examples/40">Retrieve human enzymes that metabolize sphingolipids and are annotated in ChEMBL</a></h3>
+			  <span class="indent">Joins Uniprot, Rhea, and ChEMBL</span>
+          </li>
       </ul>
     </section>
     
@@ -580,12 +568,26 @@ dbr:Alice foaf:name "Alice" .</pre>
 		<li><a href="#index-rdf">RDF</a></li>
         <li><a href="#index-sparql">SPARQL</a></li>
         <li><a href="#index-examples">Examples</a></li>
-        <li><a href="#index-future">Future challenges</a></li>
       </ul>
     </section>
 	
     <section id="conclusion" class="slide" inlist="" rel="schema:hasPart" resource="#conclusion">
-      <h2 property="schema:name" class="big">TODO: Conclusion</h2>
+      <h2 property="schema:name" class="big">Conclusions</h2>
+      <ul>
+          <li>
+          	  <h3>Biological Knowledge Graphs use (Semantic) Web technologies</h3>
+			  <span class="indent">RDF, SPARQL, &mldr;</span>
+          </li>
+          <li>
+          	  <h3>Knowledge Graphs can be interlinked</h3>
+			  <span class="indent">Thanks to RDF's global identifiers</span>
+          </li>
+          <li>
+          	  <h3>Federated querying</h3>
+			  <span class="indent">Combining data across multiple Knowledge Graphs</span><br \>
+              <span class="indent">Complex queries can be slow</span>
+          </li>
+      </ul>
     </section>
 
     <footer>
