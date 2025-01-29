@@ -290,16 +290,86 @@
       </ul>
     </section>
     
-    <section id="some-slide" class="slide" inlist="" rel="schema:hasPart" resource="#some-slide">
-      <h2 property="schema:name">TODO: A regular slide</h2>
+    <section id="rdf-specs" class="slide" inlist="" rel="schema:hasPart" resource="#rdf-specs">
+      <h2 property="schema:name">RDF enables data exchange on the Web</h2>
       <ul>
           <li>
-          	  <h3>A</h3>
-			  <span class="indent">TODO: Description</span>
+          	  <h3>RDF</h3>
+			  <span class="indent">Resource Description framework</span>
           </li>
-          <li>B</li>
-          <li>C</li>
+          <li>
+          	  <h3><a href="https://www.w3.org/TR/rdf10-concepts/">RDF 1.0</a></h3>
+			  <span class="indent">Recommended by W3C since 1999</span>
+          </li>
+          <li>
+          	  <h3><a href="https://www.w3.org/TR/rdf11-concepts/">RDF 1.1</a></h3>
+			  <span class="indent">Recommended by W3C since 2014</span>
+          </li>
+          <li>
+          	  <h3><a href="https://www.w3.org/TR/rdf12-concepts/">RDF 1.2</a></h3>
+			  <span class="indent">Upcoming in 2025</span>
+          </li>
       </ul>
+    </section>
+    
+    <section id="rdf-triple" class="slide" inlist="" rel="schema:hasPart" resource="#rdf-triple">
+      <h2 property="schema:name">Facts are represented as RDF triples</h2>
+      <center>
+          <img src="img/triple.svg" alt="RDF triple" width="900px" style="margin-top: 0px" /><br \>
+          <img src="img/triple-spo.svg" alt="RDF triple" width="900px"  style="margin-top: -350px" class="next" />
+      </center>
+    </section>
+    
+    <section id="rdf-triples" class="slide" inlist="" rel="schema:hasPart" resource="#rdf-triples">
+      <h2 property="schema:name">Multiple RDF triples form RDF datasets</h2>
+      <pre style="margin-top: 100px; margin-left: 200px; font-size: 1.5em">
+:Alice :knows :Bob .
+:Alice :knows :Carol .
+:Alice :name "Alice" .
+:Bob :name "Bob" .
+:Bob :knows :Carol .</pre>
+    </section>
+    
+    <section id="rdf-iris" class="slide" inlist="" rel="schema:hasPart" resource="#rdf-iris">
+      <h2 property="schema:name">RDF Resources are identified by IRIs</h2>
+      <center><p style="font-size: 1.5em">https://example.org/Alice</p></center>
+      <ul>
+          <li>
+          	  <h3>IRI</h3>
+			  <span class="indent">Internationalized Resource Identifier</span>
+          </li>
+          <li>
+          	  <h3>Global identifiers</h3>
+			  <span class="indent">Can be used by different data sources &rarr; interlinking!</span>
+          </li>
+          <li>
+          	  <h3>IRIs can be URLs</h3>
+			  <span class="indent">A URL is an IRI that can be <em>dereferenced</em> (e.g. looked up in Web browsers).</span><br \>
+              <span class="indent">Allows additional information to be looked up for a resource.</span>
+          </li>
+      </ul>
+    </section>
+    
+    <section id="rdf-syntax" class="slide" inlist="" rel="schema:hasPart" resource="#rdf-syntax">
+      <h2 property="schema:name">Multiple syntaxes exist for RDF</h2>
+      <h3>Turtle</h3>
+      <pre style="margin-left: 100px; font-size: 0.75em">
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+dbr:Alice foaf:knows dbr:Bob .
+dbr:Alice foaf:name "Alice" .</pre>
+      <h3>JSON-LD</h3>
+      <pre style="margin-left: 100px; font-size: 0.75em">
+{
+    "@context": {
+        "dbr": "http://dbpedia.org/resource/",
+        "foaf": "http://xmlns.com/foaf/0.1/"
+    },
+    "@id": "dbr:Alice",
+    "foaf:knows": "dbr:Bob",
+    "foaf:name": "Alice"
+}</pre>
     </section>
     
     <section id="index-sparql" class="slide index" inlist="" rel="schema:hasPart" resource="#index-sparql">
